@@ -85158,7 +85158,33 @@ function () {
 }();
 
 exports.Company = Company;
-},{"./../utils/faker":"utils/faker.ts"}],"classes/User.ts":[function(require,module,exports) {
+},{"./../utils/faker":"utils/faker.ts"}],"classes/CustomMap.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var CustomMap =
+/** @class */
+function () {
+  function CustomMap(elememtId) {
+    // The we need to create the app by creating a new instance of the class
+    // then we need to pass in the options which is an object {opt1: "value", opt2: "other value"}
+    this.googleMap = new google.maps.Map(document.getElementById(elememtId), {
+      zoom: 10,
+      center: {
+        lat: 33.880199,
+        lng: -84.512627
+      }
+    });
+  }
+
+  return CustomMap;
+}();
+
+exports.CustomMap = CustomMap;
+},{}],"classes/User.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85196,16 +85222,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var Company_1 = require("./../classes/Company");
 
+var CustomMap_1 = require("../classes/CustomMap");
+
 var User_1 = require("../classes/User"); // constructor from user takes number as argument if 3 < returns female
 
 
 var female = new User_1.User(0);
 var male = new User_1.User(1);
-var company = new Company_1.Company();
-console.log(company);
-console.log(male);
-console.log(female);
-},{"./../classes/Company":"classes/Company.ts","../classes/User":"classes/User.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var company = new Company_1.Company(); // console.log(company);
+// console.log(male);
+// console.log(female);
+
+var customMap = new CustomMap_1.CustomMap('map'); // console.log(customMap);
+},{"./../classes/Company":"classes/Company.ts","../classes/CustomMap":"classes/CustomMap.ts","../classes/User":"classes/User.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -85233,7 +85262,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58241" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54416" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
