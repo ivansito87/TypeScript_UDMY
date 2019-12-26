@@ -85129,7 +85129,17 @@ exports.Faker = {
     return faker_1.default.company.catchPhrase();
   }
 };
-},{"faker":"../node_modules/faker/index.js"}],"classes/Company.ts":[function(require,module,exports) {
+},{"faker":"../node_modules/faker/index.js"}],"utils/MapInfoWindow.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.getContent = function (user) {
+  return "\n    <div>\n    <h1>Hello " + user + "</h1>\n    </div>\n    ";
+};
+},{}],"classes/Company.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85138,27 +85148,40 @@ Object.defineProperty(exports, "__esModule", {
 
 var faker_1 = require("./../utils/faker");
 
+var MapInfoWindow_1 = require("../utils/MapInfoWindow");
+
 var Company =
 /** @class */
 function () {
   function Company() {
     this.location = {
-      long: null,
+      lng: null,
       lat: null
     };
+    /**
+     * color property defined by the interface when the class is implemented
+     * the fields that are in the interface must exist within the class
+     * in order to satisfy the interface
+     **/
+
+    this.color = "green";
     this.name = faker_1.Faker.catchPrashe();
     this.catchPrashe = faker_1.Faker.getcatchPrashe();
     this.location = {
-      long: faker_1.Faker.getLongitude(),
+      lng: faker_1.Faker.getLongitude(),
       lat: faker_1.Faker.getLatitude()
     };
   }
+
+  Company.prototype.markerContent = function () {
+    return MapInfoWindow_1.getContent(this.name);
+  };
 
   return Company;
 }();
 
 exports.Company = Company;
-},{"./../utils/faker":"utils/faker.ts"}],"classes/CustomMap.ts":[function(require,module,exports) {
+},{"./../utils/faker":"utils/faker.ts","../utils/MapInfoWindow":"utils/MapInfoWindow.ts"}],"classes/CustomMap.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85172,13 +85195,31 @@ function () {
     // The we need to create the app by creating a new instance of the class
     // then we need to pass in the options which is an object {opt1: "value", opt2: "other value"}
     this.googleMap = new google.maps.Map(document.getElementById(elememtId), {
-      zoom: 10,
+      zoom: 1,
       center: {
-        lat: 33.880199,
-        lng: -84.512627
+        lat: 0,
+        lng: 0
       }
     });
   }
+
+  CustomMap.prototype.handleMarker = function (markerArg) {
+    var _this = this;
+
+    var marker = new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: markerArg.location.lat,
+        lng: markerArg.location.lng
+      }
+    });
+    marker.addListener("click", function () {
+      var infoWindow = new google.maps.InfoWindow({
+        content: markerArg.markerContent()
+      });
+      infoWindow.open(_this.googleMap, marker);
+    });
+  };
 
   return CustomMap;
 }();
@@ -85191,29 +85232,42 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var faker_1 = require("./../utils/faker");
+var MapInfoWindow_1 = require("./../utils/MapInfoWindow");
+
+var faker_1 = require("./../utils/faker"); // By adding the implememts keyword we are implicitly saying that the user class has
+// to mandatory have all the felds that the interface in this case color is missing we need
+// to add it
+
 
 var User =
 /** @class */
 function () {
   function User(gender) {
     this.location = {
-      long: null,
+      lng: null,
       lat: null
     };
+    /**
+     * color as per the interface requires it  */
+
+    this.color = "red";
     this.firstName = faker_1.Faker.getFirstName(gender);
     this.lastName = faker_1.Faker.getLastName();
     this.location = {
-      long: faker_1.Faker.getLongitude(),
+      lng: faker_1.Faker.getLongitude(),
       lat: faker_1.Faker.getLatitude()
     };
   }
+
+  User.prototype.markerContent = function () {
+    return MapInfoWindow_1.getContent(this.firstName);
+  };
 
   return User;
 }();
 
 exports.User = User;
-},{"./../utils/faker":"utils/faker.ts"}],"src/index.ts":[function(require,module,exports) {
+},{"./../utils/MapInfoWindow":"utils/MapInfoWindow.ts","./../utils/faker":"utils/faker.ts"}],"src/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -85233,7 +85287,10 @@ var company = new Company_1.Company(); // console.log(company);
 // console.log(male);
 // console.log(female);
 
-var customMap = new CustomMap_1.CustomMap('map'); // console.log(customMap);
+var customMap = new CustomMap_1.CustomMap("map");
+var maleMarker = customMap.handleMarker(male);
+var femaleMarker = customMap.handleMarker(female);
+var companyMarker = customMap.handleMarker(company); // console.log(customMap);
 },{"./../classes/Company":"classes/Company.ts","../classes/CustomMap":"classes/CustomMap.ts","../classes/User":"classes/User.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

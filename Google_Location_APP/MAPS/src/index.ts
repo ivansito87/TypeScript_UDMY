@@ -10,7 +10,11 @@ const company = new Company();
 // console.log(male);
 // console.log(female);
 
+const customMap = new CustomMap("map");
 
-const customMap = new CustomMap('map');
+
+const maleMarker = customMap.handleMarker(male);
+const femaleMarker = customMap.handleMarker(female);
+const companyMarker = customMap.handleMarker(company);
 
 // console.log(customMap);
