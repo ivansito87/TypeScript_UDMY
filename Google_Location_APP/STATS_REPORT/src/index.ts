@@ -1,8 +1,9 @@
-import { MatchResult } from "./enums/MatchResult.enum";
 import fs from "fs";
+import { MatchResult } from "./enums/MatchResult.enum";
 import { CsvFileReader } from "./classes/CSVReader";
+import { MatchReder } from "./classes/MatchReader";
 
-const reader = new CsvFileReader("football.csv");
+const reader = new MatchReder("football.csv");
 reader.read(); // read the data;
 
 let manUnitedWins = 0;

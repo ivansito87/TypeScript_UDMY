@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MatchResult_enum_1 = require("./enums/MatchResult.enum");
-var CSVReader_1 = require("./classes/CSVReader");
-var reader = new CSVReader_1.CsvFileReader("football.csv");
+var MatchReader_1 = require("./classes/MatchReader");
+var reader = new MatchReader_1.MatchReder("football.csv");
 reader.read(); // read the data;
 var manUnitedWins = 0;
 for (var _i = 0, _a = reader.data; _i < _a.length; _i++) {
