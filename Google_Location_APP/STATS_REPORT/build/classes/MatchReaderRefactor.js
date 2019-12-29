@@ -1,11 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var dateStringToDate_1 = require("../utils/dateStringToDate");
+var CsvFileReaderNoAbstract_1 = require("./CsvFileReaderNoAbstract");
 var MatchReaderRefactor = /** @class */ (function() {
   function MatchReaderRefactor(reader) {
     this.reader = reader;
     this.matches = [];
   }
+  MatchReaderRefactor.fromCsv = function(fileName) {
+    return new MatchReaderRefactor(
+      new CsvFileReaderNoAbstract_1.CsvFileReaderNoAbstract(fileName)
+    );
+  };
   MatchReaderRefactor.prototype.load = function() {
     this.reader.read();
     this.matches = this.reader.data.map(function(row) {

@@ -26,14 +26,14 @@ var __extends =
     };
   })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var dateStringToDate_1 = require("./../utils/dateStringToDate");
+var dateStringToDate_1 = require("../utils/dateStringToDate");
 var CSVReader_1 = require("./CSVReader");
-var MatchReder = /** @class */ (function(_super) {
-  __extends(MatchReder, _super);
-  function MatchReder() {
+var MatchReader = /** @class */ (function(_super) {
+  __extends(MatchReader, _super);
+  function MatchReader() {
     return (_super !== null && _super.apply(this, arguments)) || this;
   }
-  MatchReder.prototype.mapRow = function(singleRow) {
+  MatchReader.prototype.mapRow = function(singleRow) {
     return [
       dateStringToDate_1.dateStringToDate(singleRow[0]),
       singleRow[1],
@@ -44,6 +44,6 @@ var MatchReder = /** @class */ (function(_super) {
       singleRow[6]
     ];
   };
-  return MatchReder;
+  return MatchReader;
 })(CSVReader_1.CsvFileReader);
-exports.MatchReder = MatchReder;
+exports.MatchReader = MatchReader;

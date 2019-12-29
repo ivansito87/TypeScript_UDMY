@@ -1,19 +1,7 @@
 import { dateStringToDate } from "../utils/dateStringToDate";
 import { MatchResult } from "../enums/MatchResult.enum";
 import { CsvFileReader } from "./CsvFileReader";
-
-/*
-TUPLE define an array with all the properties
-*/
-type MatchDataTuple = [
-  Date,
-  string,
-  string,
-  number,
-  number,
-  MatchResult,
-  string
-];
+import { MatchDataTuple } from "../utils/MatchDataTuple";
 
 export class MatchReader extends CsvFileReader<MatchDataTuple> {
   mapRow(singleRow: string[]): MatchDataTuple {

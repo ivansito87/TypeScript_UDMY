@@ -1,22 +1,14 @@
 import { MatchResult } from "../enums/MatchResult.enum";
 import { dateStringToDate } from "../utils/dateStringToDate";
+import { MatchDataTuple } from "../utils/MatchDataTuple";
 import { CsvFileReaderNoAbstract } from "./CsvFileReaderNoAbstract";
-/*
-TUPLE define an array with all the properties
-*/
-type MatchDataTuple = [
-  Date,
-  string,
-  string,
-  number,
-  number,
-  MatchResult,
-  string
-];
 
 export class MatchReaderRefactor {
-  matches: MatchDataTuple[] = [];
+  static fromCsv(fileName: string): MatchReaderRefactor {
+    return new MatchReaderRefactor(new CsvFileReaderNoAbstract(fileName));
+  }
 
+  matches: MatchDataTuple[] = [];
   constructor(public reader: CsvFileReaderNoAbstract) {}
 
   public load(): void {
