@@ -7,7 +7,7 @@ var fs_1 = __importDefault(require("fs"));
 var CsvFileReader = /** @class */ (function () {
     function CsvFileReader(fileName) {
         this.fileName = fileName;
-        // since the MatchDataTouple has the value of an array
+        // since the MatchDataTuple has the value of an array
         // TS knows that the data field will be an array of arrays
         // like so data: Array<Array<string>> or data : string[][];
         this.data = [];
