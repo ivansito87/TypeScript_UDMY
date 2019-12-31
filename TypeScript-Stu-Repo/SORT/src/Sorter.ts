@@ -2,7 +2,6 @@ import { Sortable } from "./Sortable.interface";
 import { NumbersCollection } from "./NumbersCollection";
 
 export abstract class Sorter {
-
   // Abstartcing classes means that the methids and properties defined
   // inside of the class doesn't exist at the momemnt, but when is referenced
   // the classes who extend must provide the methods and fields listed here

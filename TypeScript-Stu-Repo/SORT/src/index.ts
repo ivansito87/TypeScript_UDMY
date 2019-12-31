@@ -40,5 +40,3 @@ _linkedList.add(4);
 // We now have access to all the methods inside of the class
 _linkedList.sort(); // <-- After
 _linkedList.print(); // <-- After
-
-

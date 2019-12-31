@@ -1,4 +1,3 @@
-
 import { MarkerInterface } from "./CustomMap.interface";
 
 export class CustomMap {
@@ -27,7 +26,7 @@ export class CustomMap {
     });
     marker.addListener("click", () => {
       const infoWindow = new google.maps.InfoWindow({
-        content: markerArg.markerContent(),
+        content: markerArg.markerContent()
       });
       infoWindow.open(this.googleMap, marker);
     });

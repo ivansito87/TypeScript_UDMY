@@ -1,5 +1,3 @@
 export default class Maps {
-    constructor(name: string) {
-      
-  }
+  constructor(name: string) {}
 }

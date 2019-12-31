@@ -9,14 +9,21 @@ var NumbersCollection_1 = require("./NumbersCollection");
  */
 // const numberSorter = new Sorter(numbersCollection); // <-- Before
 // numberSorter.sort(); // <-- Before
-var numbersCollection = new NumbersCollection_1.NumbersCollection([50, 13, -5, 0]); // <-- After
+var numbersCollection = new NumbersCollection_1.NumbersCollection([
+  50,
+  13,
+  -5,
+  0
+]); // <-- After
 numbersCollection.sort(); // <-- After
 console.log(numbersCollection.data);
 /**
  * Using the methods sort inside of the charactersCollection Class after it
  * extended the Sorter Class now we have access to the sort method
  */
-var charactersCollection = new CaractersCollection_1.CharactersCollection("Xyaab"); // <-- After
+var charactersCollection = new CaractersCollection_1.CharactersCollection(
+  "Xyaab"
+); // <-- After
 // const caractersSorter = new Sorter(charactersCollection); // <-- Before
 // caracterSorter.sort(); // <-- Before
 charactersCollection.sort(); // <-- After

@@ -13,7 +13,7 @@ export class Company implements MarkerInterface {
   /**
    * color property defined by the interface when the class is implemented
    * the fields that are in the interface must exist within the class
-   * in order to satisfy the interface  
+   * in order to satisfy the interface
    **/
   public color: string = "green";
 
