@@ -15,15 +15,22 @@ let truths: boolean[] = [true, true, false];
 
 // Classes
 class Car {}
-let car: Car = new Car();
+let _car: Car = new Car();
+
+interface Point {
+  x: number;
+  y: number;
+}
 
 // Object literal
-let point: { x: number; y: number } = {
+//      { x: number; y: number }  is like assigning an interface to the type
+// The property should match the types
+let point: Point = {
   x: 10,
-  y: 20
+  y: 20,
 };
 
-// Function
+// Function    description of the function is like typing a function.
 const logNumber: (i: number) => void = (i: number) => {
   console.log(i);
 };
