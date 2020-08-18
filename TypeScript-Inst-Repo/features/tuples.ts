@@ -1,8 +1,11 @@
 const drink = {
   color: "brown",
   carbonated: true,
-  sugar: 40
+  sugar: 40,
 };
+
+// Tuples add orders to arrays, as substitution of key value pairs,
+// we use tuples to identify the order, we hve to define the tuple before
 
 // Type alias
 type Drink = [string, boolean, number];
@@ -15,5 +18,5 @@ const carSpecs: [number, number] = [400, 3354];
 
 const carStats = {
   horsepower: 400,
-  weight: 3354
+  weight: 3354,
 };
